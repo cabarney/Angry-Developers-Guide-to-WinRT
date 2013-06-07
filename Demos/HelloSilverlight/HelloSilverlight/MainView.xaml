@@ -18,8 +18,8 @@
 
         <TextBox Text="{Binding Number, TargetNullValue='', UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, ValidatesOnDataErrors=True}" Grid.Column="0"></TextBox>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <TextBlock>Rounded Value: </TextBlock>
-            <TextBlock Text="{Binding Number, TargetNullValue='Nothing entered!', StringFormat=\{0:.000\}}" />
+            <TextBlock>Formatted Value: </TextBlock>
+            <TextBlock Text="{Binding Number, TargetNullValue='null', StringFormat=\{0:.000\}}" />
         </StackPanel>
     </Grid>
 </UserControl>

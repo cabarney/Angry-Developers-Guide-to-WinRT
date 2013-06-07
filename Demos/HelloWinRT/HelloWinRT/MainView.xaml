@@ -21,18 +21,17 @@
             <ColumnDefinition Width="11*" />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal">
-            <local:UpdatingTextBox
+            <local:UpdatingTextBox Width="200" VerticalAlignment="Center"
                 BindableText="{Binding Number, Mode=TwoWay, Converter={StaticResource MegaConverter}, 
                 ConverterParameter={StaticResource DoubleTextboxParameter}}"
                 local:Validation.Property="Number" local:Validation.DataContext="{Binding}"
                 local:Validation.ValidationPlaceholder="{Binding ElementName=NumberErrorMessage}"
                 Grid.Column="0" />
-            <local:ValidationResultPlaceholder x:Name="NumberErrorMessage"></local:ValidationResultPlaceholder>
-            
+            <local:ValidationResultPlaceholder x:Name="NumberErrorMessage" VerticalAlignment="Center"></local:ValidationResultPlaceholder>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <TextBlock>Rounded Value: </TextBlock>
+            <TextBlock>Formatted Value: </TextBlock>
             <TextBlock
                 Text="{Binding Number, Converter={StaticResource MegaConverter}, ConverterParameter={StaticResource DoubleTextblockParameter}}" />
         </StackPanel>
