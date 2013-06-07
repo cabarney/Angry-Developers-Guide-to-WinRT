@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="HelloWinRT.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HelloWinRT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d">
+    <Page.Resources>
+        <local:SuperMegaValueConverter x:Key="MegaConverter" />
+        <local:SuperMegaConverterParameter TargetNullValue="" Type="double" Format="" x:Key="DoubleTextboxParameter" />
+        <local:SuperMegaConverterParameter TargetNullValue="null" Type="double" Format=".000" x:Key="DoubleTextblockParameter" />
+    </Page.Resources>
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*" />
+            <ColumnDefinition Width="11*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <local:UpdatingTextBox
+                BindableText="{Binding Number, Mode=TwoWay, Converter={StaticResource MegaConverter}, 
+                ConverterParameter={StaticResource DoubleTextboxParameter}}"
+                local:Validation.Property="Number" local:Validation.DataContext="{Binding}"
+                local:Validation.ValidationPlaceholder="{Binding ElementName=NumberErrorMessage}"
+                Grid.Column="0" />
+            <local:ValidationResultPlaceholder x:Name="NumberErrorMessage"></local:ValidationResultPlaceholder>
+            
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock>Rounded Value: </TextBlock>
+            <TextBlock
+                Text="{Binding Number, Converter={StaticResource MegaConverter}, ConverterParameter={StaticResource DoubleTextblockParameter}}" />
+        </StackPanel>
+    </Grid>
+</Page>

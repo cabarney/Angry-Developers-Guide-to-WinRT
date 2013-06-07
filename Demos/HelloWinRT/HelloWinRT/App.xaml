@@ -1,0 +1,26 @@
+﻿<Application
+    x:Class="HelloWinRT.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary  xmlns:Views="using:HelloWinRT">
+            <Style TargetType="Views:ValidationResultPlaceholder">
+                <Setter Property="Margin" Value="0,10,0,10"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Views:ValidationResultPlaceholder">
+                            <ItemsControl ItemsSource="{TemplateBinding Content}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Red">
+                                            <TextBlock Text="{Binding}" Foreground="White"/></Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
